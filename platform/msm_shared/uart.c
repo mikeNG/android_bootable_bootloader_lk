@@ -118,9 +118,7 @@
 #define UART_ISR         0x0014
 
 static unsigned uart_ready = 0;
-#if PLATFORM_MSM7X30
-static unsigned uart_base = MSM_UART2_BASE;
-#elif PLATFORM_MSM7X27A
+#if PLATFORM_MSM7X27A
 static unsigned uart_base = MSM_UART1_BASE;
 #else
 static unsigned uart_base = MSM_UART3_BASE;

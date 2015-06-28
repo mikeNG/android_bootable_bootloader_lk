@@ -44,7 +44,7 @@
 void platform_init_interrupts(void);
 void platform_init_timer();
 
-void uart2_clock_init(void);
+void uart3_clock_init(void);
 void uart_init(void);
 
 struct fbcon_config *lcdc_init(void);
@@ -52,11 +52,9 @@ static uint32_t ticks_per_sec = 0;
 
 #define ARRAY_SIZE(a) (sizeof(a)/(sizeof((a)[0])))
 
-static unsigned uart2_gpio_table[] = {
-	GPIO_CFG(49, 2, GPIO_OUTPUT, GPIO_PULL_DOWN, GPIO_2MA),
-	GPIO_CFG(50, 2, GPIO_INPUT, GPIO_PULL_DOWN, GPIO_2MA),
-	GPIO_CFG(51, 2, GPIO_INPUT, GPIO_PULL_DOWN, GPIO_2MA),
-	GPIO_CFG(52, 2, GPIO_OUTPUT, GPIO_PULL_DOWN, GPIO_2MA),
+static unsigned uart3_gpio_table[] = {
+	GPIO_CFG(53, 1, GPIO_INPUT, GPIO_PULL_UP, GPIO_2MA),
+	GPIO_CFG(54, 1, GPIO_OUTPUT, GPIO_NO_PULL, GPIO_4MA),
 };
 
 /* CRCI - mmc slot mapping.
@@ -65,16 +63,16 @@ static unsigned uart2_gpio_table[] = {
  */
 uint8_t sdc_crci_map[5] = { 0, 6, 7, 12, 13 };
 
-void uart2_mux_init(void)
+void uart3_mux_init(void)
 {
-	platform_gpios_enable(uart2_gpio_table, ARRAY_SIZE(uart2_gpio_table));
+	platform_gpios_enable(uart3_gpio_table, ARRAY_SIZE(uart3_gpio_table));
 }
 
 void platform_early_init(void)
 {
 #if WITH_DEBUG_UART
-	uart2_mux_init();
-	uart2_clock_init();
+	uart3_mux_init();
+	uart3_clock_init();
 	uart_init();
 #endif
 	platform_init_interrupts();

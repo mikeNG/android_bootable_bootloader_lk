@@ -6,6 +6,9 @@ TARGET := msm7630_surf
 
 MODULES += app/aboot
 
+# Debug level (for UART console)
+DEBUG := SPEW
+
 #DEFINES += WITH_DEBUG_DCC=1
 DEFINES += WITH_DEBUG_UART=1
 #DEFINES += WITH_DEBUG_FBCON=1

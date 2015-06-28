@@ -133,7 +133,8 @@ struct flash_identification {
 
 static struct flash_identification supported_flash[] = {
 	/* Flash ID     ID Mask Density(MB)  Wid Pgsz   Blksz   oobsz onenand   Manuf */
-	{0x00000000, 0xFFFFFFFF, 0, 0, 0, 0, 0, 0}, /*ONFI*/ {0x1500aaec, 0xFF00FFFF, (256 << 20), 0, 2048, (2048 << 6), 64, 0},	/*Sams */
+	{0x00000000, 0xFFFFFFFF, 0,           0,    0,           0,  0, 0},	/*ONFI*/
+	{0x1500aaec, 0xFF00FFFF, (256 << 20), 0, 2048, (2048 << 6), 64, 0},	/*Sams */
 	{0x5500baec, 0xFF00FFFF, (256 << 20), 1, 2048, (2048 << 6), 64, 0},	/*Sams */
 	{0x1500aa98, 0xFFFFFFFF, (256 << 20), 0, 2048, (2048 << 6), 64, 0},	/*Tosh */
 	{0x5500ba98, 0xFFFFFFFF, (256 << 20), 1, 2048, (2048 << 6), 64, 0},	/*Tosh */
@@ -152,6 +153,9 @@ static struct flash_identification supported_flash[] = {
 	{0x6600b3ec, 0xFFFFFFFF, (1024 << 20), 1, 4096, (4096 << 6), 128, 0},	/*Sams */
 	{0x2600482c, 0xFF00FFFF, (2048 << 20), 0, 4096, (4096 << 7), 224, 0},	/*8bit bch ecc */
 	{0x55d1b32c, 0xFFFFFFFF, (1024 << 20), 1, 2048, (2048 << 6), 64, 0},	/*Micr */
+	{0x5591b398, 0xFFFFFFFF, (1024 << 20), 1, 2048, (2048 << 6), 64, 0},	/*Tosh*/
+	{0x6600b398, 0x7F00FFFF, (1024 << 20), 1, 4096, (4096 << 6), 128, 0},	/*Tosh*/
+	{0x6600b3ec, 0xFF00FFFF, (1024 << 20), 1, 4096, (4096 << 6), 128, 1},	/*Sams*/
 	/* Note: Width flag is 0 for 8 bit Flash and 1 for 16 bit flash   */
 	/* Note: Onenand flag is 0 for NAND Flash and 1 for OneNAND flash       */
 	/* Note: The First row will be filled at runtime during ONFI probe      */
